@@ -87,8 +87,8 @@ const Home = () => {
             title: `Edit ${task.name}`,
             html: `
               <div class='flex flex-col gap-1 justify-center items-center w-full'>
-                <input type='text' value='${task.name}' class='outline-none bg-gray-50 w-[80vw] md:w-[20vw] border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500' defaultValue='${task.name}' id='name' required />
-                <select  id='priority' class="w-[80vw] md:w-[20vw] mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500">
+                <input type='text' value='${task.name}' class='outline-none  w-[80vw] md:w-[20vw] border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white' id='taskname' required />
+                <select  id='priority' class="w-[80vw] md:w-[20vw] mt-2 border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
                   <option value="Low"  ${task.priority === 'Low' && 'selected'}>Low</option>
                   <option value="Medium" ${task.priority === 'Medium' && 'selected'}>Medium</option>
                   <option value="High" ${task.priority === 'High' && 'selected'}>High</option>
