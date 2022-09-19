@@ -20,7 +20,7 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
     const [totalpage1, setTotalPage1] = useState<number>(0)
     const [totalpage2, setTotalPage2] = useState<number>(0)
     useEffect(() => {
-        setTotalPage1(Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
+        setTotalPage1(Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search1.toLowerCase())).length/10))
         setTotalPage2(Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
     }, [tasks])
     return (
@@ -28,7 +28,7 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
             <div className='ml-auto'>
                 <input onChange={(e) => {
                     setSearch1(e.target?.value)
-                    setTotalPage1(Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
+                    setTotalPage1(Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(e.target.value.toLowerCase())).length/10))
                 }} type="text" value={search1} placeholder='Search something' className="outline-none w-[30vh] md:w-[40vh] border  text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-900 border-gray-900 placeholder-gray-400 text-white dark:focus:border-red-500" required />
             </div>
             <h2 className='text-white text-md font-bold'>Tasks in progress</h2>
@@ -78,7 +78,7 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
             <div className='ml-auto'>
                 <input onChange={(e) => {
                     setSearch2(e.target?.value)
-                    setTotalPage2(Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
+                    setTotalPage2(Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(e.target.value.toLowerCase())).length/10))
                 }} type="text" value={search2} placeholder='Search something' className="outline-none w-[30vh] md:w-[40vh] border  text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-900 border-gray-900 placeholder-gray-400 text-white dark:focus:border-red-500" required />
             </div>
             <h2 className='text-white text-md font-bold'>Tasks done</h2>
