@@ -38,18 +38,18 @@ const Home = () => {
         background: 'rgb(17, 24, 39)',
         showCancelButton: true
       }).then(result => {
-        if(result.isConfirmed)
+        if(result.isConfirmed) {
           setTasks(task => {
             updateStorage([...task, {id: task.length + 1, name: name, priority: priority, done: false}])
             return ([...task, {id: task.length + 1, name: name, priority: priority, done: false}])}
           )
+          setName('')
+          setPriority('Low')
+        }
       })
-    setName('')
-    setPriority('Low')
   }
   const updateStorage = (task: Task[]) => {
     localStorage.setItem('tasks', JSON.stringify(task))
-    console.log(task)
   }
 
   const handleDelete = (id: number) => {
