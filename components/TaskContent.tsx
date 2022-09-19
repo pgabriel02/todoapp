@@ -16,11 +16,11 @@ const TaskContent = ({task, handleMark, handleEdit, handleDelete}: Props) => {
             <td className='flex items-center justify-center gap-2'>
                 {!task.done &&
                     <>
-                        <BsCheck  onClick={() => handleMark(task.id)} className='text-green-400 text-2xl cursor-pointer'/>
-                        <BsFillPencilFill onClick={() => handleEdit(task.id)} className='text-white text-md cursor-pointer' />
+                        <BsCheck title='Mark as done' onClick={() => handleMark(task.id)} className='text-green-400 text-2xl cursor-pointer'/>
+                        <BsFillPencilFill title='Edit task' onClick={() => handleEdit(task.id)} className='text-white text-md cursor-pointer' />
                     </>
                 }
-                <BsTrashFill onClick={() => handleDelete(task.id)} className='text-red-400 text-md cursor-pointer'/>
+                <BsTrashFill title='Delete task' onClick={() => handleDelete(task.id)} className='text-red-400 text-md cursor-pointer'/>
             </td>
         </tr>
     )
