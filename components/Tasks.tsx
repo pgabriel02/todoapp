@@ -24,7 +24,7 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
         setTotalPage2(Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
     }, [tasks])
     return (
-        <div className='mt-5 flex w-[80%] mx-auto flex-col gap-2 justify-center items-center md:justify-start md:items-start'>
+        <div className='mt-5 flex w-[90%] mx-auto flex-col gap-2 justify-center items-center md:justify-start md:items-start'>
             <div className='ml-auto'>
                 <input onChange={(e) => {
                     setSearch1(e.target?.value)
