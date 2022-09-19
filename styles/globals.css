@@ -23,12 +23,13 @@ body {
 .swal2-title, .swal2-html-container {
   color: white !important;
 }
+
 td, th {
   padding: 10px;
 }
 
 @media(min-width: 928px) {
-  td, th {
+  td {
     padding: 2px;
   }
 }
