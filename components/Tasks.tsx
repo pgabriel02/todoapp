@@ -22,7 +22,7 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
     useEffect(() => {
         setTotalPage1(Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
         setTotalPage2(Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
-    }, [])
+    }, [tasks])
     return (
         <div className='mt-5 flex w-[80%] mx-auto flex-col gap-2 justify-center items-center md:justify-start md:items-start'>
             <div className='ml-auto'>
@@ -51,27 +51,27 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
             </table>
             <ul className="inline-flex ml-auto my-5">
                 {
-                    page1 > 1 &&
+                    page1 > 2 &&
                     <li onClick={() => setPage1(1)} title='First page'>
-                        <BiFirstPage className='text-black/80 cursor-pointer text-md' />
+                        <BiFirstPage className='text-white cursor-pointer text-md' />
                     </li>
                 }
                 {
                     page1 > 1 &&
                     <li onClick={() => setPage1(old => old - 1)} title='Previous page'>
-                        <AiOutlineLeft  className='text-black/80 cursor-pointer text-md'/>
+                        <AiOutlineLeft  className='text-white cursor-pointer text-md'/>
                     </li>
                 }
                 {
                     page1 < totalpage1 &&
                     <li onClick={() => setPage1(old => old + 1)} title='Next page'>
-                        <AiOutlineRight  className='text-black/80 cursor-pointer text-md'/>
+                        <AiOutlineRight  className='text-white cursor-pointer text-md'/>
                     </li>
                 }
                 {
                     page1 < totalpage1 - 1 &&
-                    <li onClick={() => setPage1(10)} title='Last page'>
-                        <BiLastPage  className='text-black/80 cursor-pointer text-md'/>
+                    <li onClick={() => setPage1(totalpage1)} title='Last page'>
+                        <BiLastPage  className='text-white cursor-pointer text-md'/>
                     </li>
                 }
             </ul>
@@ -101,27 +101,27 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
             </table>
             <ul className="inline-flex ml-auto my-5">
                 {
-                    page2 > 1 &&
-                    <li onClick={() => setPage1(1)} title='First page'>
-                        <BiFirstPage className='text-black/80 cursor-pointer text-md' />
+                    page2 > 2 &&
+                    <li onClick={() => setPage2(1)} title='First page'>
+                        <BiFirstPage className='text-white cursor-pointer text-md' />
                     </li>
                 }
                 {
                     page2 > 1 &&
-                    <li onClick={() => setPage1(old => old - 1)} title='Previous page'>
-                        <AiOutlineLeft  className='text-black/80 cursor-pointer text-md'/>
+                    <li onClick={() => setPage2(old => old - 1)} title='Previous page'>
+                        <AiOutlineLeft  className='text-white cursor-pointer text-md'/>
                     </li>
                 }
                 {
                     page2 < totalpage2 &&
-                    <li onClick={() => setPage1(old => old + 1)} title='Next page'>
-                        <AiOutlineRight  className='text-black/80 cursor-pointer text-md'/>
+                    <li onClick={() => setPage2(old => old + 1)} title='Next page'>
+                        <AiOutlineRight  className='text-white cursor-pointer text-md'/>
                     </li>
                 }
                 {
                     page2 < totalpage2 - 1 &&
-                    <li onClick={() => setPage1(10)} title='Last page'>
-                        <BiLastPage  className='text-black/80 cursor-pointer text-md'/>
+                    <li onClick={() => setPage2(totalpage2)} title='Last page'>
+                        <BiLastPage  className='text-white cursor-pointer text-md'/>
                     </li>
                 }
             </ul>
