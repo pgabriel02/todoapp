@@ -1,6 +1,6 @@
-import { Task } from "./types"
+import Task from "./types"
 
-export function Pagination(data: Task[], current: number, max: number) {
+export default function Pagination(data: Task[], current: number, max: number) {
 	const last = current * max
 	const first = last - max
 	const newdata = data.slice(first, last)
