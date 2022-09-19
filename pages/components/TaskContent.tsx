@@ -1,4 +1,4 @@
-import { Task } from "../utils/types"
+import Task from "../utils/types"
 import {BsFillPencilFill, BsCheck, BsTrashFill} from 'react-icons/bs'
 type Props = {
     task: Task,

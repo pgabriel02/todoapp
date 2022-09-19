@@ -1,7 +1,7 @@
-import { Task } from "../utils/types"
+import Task from "../utils/types"
 import TaskContent from "./TaskContent"
 import {useState, useEffect} from 'react'
-import { Pagination } from "../utils/pagination"
+import Pagination from "../utils/pagination"
 import {AiOutlineRight, AiOutlineLeft} from 'react-icons/ai'
 import {BiFirstPage, BiLastPage} from 'react-icons/bi' 
 

@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import Head from 'next/head'
 import Swal from 'sweetalert2'
-import { Task } from './utils/types'
+import Task from './utils/types'
 import TasksContainer from './components/Tasks'
 
 
