@@ -4,11 +4,26 @@ import {AiOutlineRight, AiOutlineLeft} from 'react-icons/ai'
 import {BiFirstPage, BiLastPage} from 'react-icons/bi' 
 import { PaginationApp, useTodoApp } from "../utils/functions"
 import CreateTask from "./CreateTask"
+import {useEffect} from 'react'
 
 const TasksContainer = () => {
     const {tasks, name, setName, priority, setPriority, addTask, handleDelete, handleEdit, handleMark} = useTodoApp()
     const {search1, setSearch1, search2, setSearch2, page1, setPage1,
         page2, setPage2, totalpage1, setTotalPage1, totalpage2, setTotalPage2} = PaginationApp()
+
+    useEffect(() => {
+        const page1function = Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search1.toLowerCase())).length/10)
+        const page2function = Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10)
+        if(page1 > page1function && tasks.length > 0) {
+            setPage1(page1function)
+        } else if(page2 > page2function) {
+            setPage2(page2function)
+        }
+        setTotalPage1(page1function)
+        setTotalPage2(page2function)
+        totalpage1 !== page1function && setTotalPage1(page1function)
+        totalpage2 !== page2function && setTotalPage2(page2function)
+    }, [tasks])
     return (
         <>
             <CreateTask name={name} setName={setName} priority={priority} setPriority={setPriority} addTask={addTask} />

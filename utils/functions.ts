@@ -180,23 +180,19 @@ export function useTodoApp() {
     setData()
   }, [setData])
 
+
   return {setTasks, tasks, name, setName, priority, setPriority,
     addTask, handleMark, handleEdit, handleDelete
     }
 }
 
 export function PaginationApp() {
-    const {tasks} = useTodoApp()
     const [search1, setSearch1] = useState<string>('')
     const [search2, setSearch2] = useState<string>('')
     const [page1, setPage1]= useState<number>(1)
     const [page2, setPage2]= useState<number>(1)
     const [totalpage1, setTotalPage1] = useState<number>(0)
     const [totalpage2, setTotalPage2] = useState<number>(0)
-    useEffect(() => {
-        setTotalPage1(Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search1.toLowerCase())).length/10))
-        setTotalPage2(Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
-    }, [tasks])
 
     return {search1, setSearch1, search2, setSearch2, page1, setPage1,
         page2, setPage2, totalpage1, setTotalPage1, totalpage2, setTotalPage2}

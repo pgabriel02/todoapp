@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import TasksContainer from '../components/Tasks'
+import ThemeSwitcher from '../components/ThemeSwitcher'
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TasksContainer />
+      <ThemeSwitcher />
     </div>
   )
 }
