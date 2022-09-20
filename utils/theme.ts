@@ -3,22 +3,22 @@ import Swal from 'sweetalert2';
 export function Theme() {
     const themes = [
         {
-            id: 1, name: 'Dark red', color: 'bg-red-900', rgb: 'rgb(127, 29, 29)'
+            id: 1, name: 'Dark red', rgb: 'rgb(127, 29, 29)'
         },
         {
-            id: 2, name: 'Light red', color: 'bg-red-400', rgb: 'rgb(248, 113, 113)'
+            id: 2, name: 'Light red', rgb: 'rgb(248, 113, 113)'
         },
         {
-            id: 3, name: 'Dark green', color: 'bg-green-900', rgb: 'rgb(20, 83, 45)'
+            id: 3, name: 'Dark green', rgb: 'rgb(20, 83, 45)'
         },
         {
-            id: 4, name: 'Light green', color: 'bg-green-400', rgb: 'rgb(74, 222, 128)'
+            id: 4, name: 'Light green', rgb: 'rgb(74, 222, 128)'
         },
         {
-            id: 5, name: 'Dark blue', color: 'bg-blue-900', rgb: 'rgb(30 58 138)'
+            id: 5, name: 'Dark blue', rgb: 'rgb(30 58 138)'
         },
         {
-            id: 6, name: 'Light blue', color: 'bg-blue-400', rgb: 'rgb(96, 165, 250)'
+            id: 6, name: 'Light blue', rgb: 'rgb(96, 165, 250)'
         }
     ];
     

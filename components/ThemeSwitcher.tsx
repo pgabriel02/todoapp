@@ -21,7 +21,7 @@ const ThemeSwitcher = () => {
 
     return (
         <>
-            <div data-theme='1' title='Theme switcher' className='fixed bottom-5 right-5 z-10' onClick={() => setToggle(!toggle)}>
+            <div data-theme='1' title='Background switcher' className='fixed bottom-5 right-5 z-10' onClick={() => setToggle(!toggle)}>
                 <span data-theme='1' className='p-3 rounded-full bg-gray-900 flex cursor-pointer'>
                     <BsBrush data-theme='1' className='text-xl text-white' fill='#fff' />
                 </span>
