@@ -6,7 +6,7 @@ export function useTodoApp() {
   const [tasks, setTasks] = useState<Task[]>([] as Task[])
   const [name, setName] = useState<string>('')
   const [priority, setPriority] = useState<string>('Low')
-  const addTask = (e: any) => {
+  const addTask = (e: FormEvent) => {
     e.preventDefault()
     if(name.length < 3)
       return Swal.fire({
