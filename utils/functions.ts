@@ -1,8 +1,8 @@
-import {useState, useEffect, useCallback} from 'react'
+import {useState, useEffect, useCallback, FormEvent} from 'react'
 import Swal from 'sweetalert2'
 import { Task } from './types'
 
-export const todoApp = () => {
+export function useTodoApp() {
   const [tasks, setTasks] = useState<Task[]>([] as Task[])
   const [name, setName] = useState<string>('')
   const [priority, setPriority] = useState<string>('Low')
@@ -27,8 +27,8 @@ export const todoApp = () => {
         background: 'rgb(17,24,39)'
       })
         setTasks(task => {
-        updateStorage([...task, {id: task.length + 1, name: name, priority: priority, done: false}])
-        return ([...task, {id: task.length + 1, name: name, priority: priority, done: false}])}
+          updateStorage([...task, {id: task.length + 1, name: name, priority: priority, done: false}])
+          return ([...task, {id: task.length + 1, name: name, priority: priority, done: false}])}
         )
         Swal.fire({
             title: 'Success',
@@ -80,8 +80,8 @@ export const todoApp = () => {
             title: `Edit ${task.name}`,
             html: `
               <div class='flex flex-col gap-1 justify-center items-center w-full'>
-                <input type='text' value='${task.name}' class='outline-none w-[80vw] md:w-[20vw] border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5  border-gray-600 placeholder-gray-400 text-black' id='taskname' style='width: 80%;border-color: rgb(31, 41, 55);background: rgb(55, 65, 81)' required />
-                <select  id='priority' class="w-[80vw] md:w-[20vw] mt-2 border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-800 border-gray-600 placeholder-gray-400 text-white" style='width: 80%;border-color: rgb(31, 41, 55);background: rgb(55, 65, 81)'>
+                <input id='name' type='text' value='${task.name}' class='outline-none w-[80vw] md:w-[20vw] border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5  border-gray-600 placeholder-gray-400 text-black' id='taskname' style='width: 80%;border-color: rgb(31, 41, 55);background: rgb(55, 65, 81)' required />
+                <select id='priority' class="w-[80vw] md:w-[20vw] mt-2 border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-800 border-gray-600 placeholder-gray-400 text-white" style='width: 80%;border-color: rgb(31, 41, 55);background: rgb(55, 65, 81)'>
                   <option value="Low"  ${task.priority === 'Low' && 'selected'}>Low</option>
                   <option value="Medium" ${task.priority === 'Medium' && 'selected'}>Medium</option>
                   <option value="High" ${task.priority === 'High' && 'selected'}>High</option>
@@ -97,17 +97,17 @@ export const todoApp = () => {
             if(result.isConfirmed) {
 
               //@ts-ignore
-              const name = Swal.getPopup()?.querySelector('#name')?.value
+              const namee = Swal.getPopup()?.querySelector('#name')?.value
               //@ts-ignore
-              const priority = Swal.getPopup()?.querySelector('#priority')?.value
-              if(name.length < 3)
+              const priorityy = Swal.getPopup()?.querySelector('#priority')?.value
+              if(namee.length < 3)
                 return Swal.fire({
                   title: 'Error',
                   text: 'Name is too short!',
                   icon: 'error',
                   background: 'rgb(17,24,39)'
                 })
-              if(name === task.name && priority === task.priority)
+              if(namee === task.name && priorityy === task.priority)
                 return;
               if(tasks.filter(t => t.name === name && t.id !== id && !t.done).length > 0)
                 return Swal.fire({
@@ -121,8 +121,8 @@ export const todoApp = () => {
                 const old = [...task]
                 old.filter(o => {
                   if(o.id === id) {
-                    o.priority = priority
-                    o.name = name
+                    o.priority = priorityy
+                    o.name = namee
                   }
                 })
                 updateStorage(old)
@@ -178,14 +178,15 @@ export const todoApp = () => {
 
   useEffect(() => {
     setData()
-  }, [])
+  }, [setData])
+
   return {setTasks, tasks, name, setName, priority, setPriority,
     addTask, handleMark, handleEdit, handleDelete
     }
 }
 
 export function PaginationApp() {
-    const {tasks} = todoApp()
+    const {tasks} = useTodoApp()
     const [search1, setSearch1] = useState<string>('')
     const [search2, setSearch2] = useState<string>('')
     const [page1, setPage1]= useState<number>(1)

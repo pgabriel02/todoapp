@@ -1,13 +1,13 @@
 import {Task} from "../utils/types"
 import {BsFillPencilFill, BsCheck, BsTrashFill} from 'react-icons/bs'
-import { todoApp } from "../utils/functions"
-
 type Props = {
     task: Task,
+    handleDelete(id: number): void
+    handleMark(id: number): void,
+    handleEdit(id: number): void,
 }
 
-const TaskContent = ({task}: Props) => {
-    const {handleMark, handleDelete, handleEdit} = todoApp()
+const TaskContent = ({task, handleMark, handleEdit, handleDelete}: Props) => {
     return (
         <tr>
             <td>{task.id}</td>
