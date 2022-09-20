@@ -80,8 +80,8 @@ export const todoApp = () => {
             title: `Edit ${task.name}`,
             html: `
               <div class='flex flex-col gap-1 justify-center items-center w-full'>
-                <input type='text' value='${task.name}' class='outline-none  w-[80vw] md:w-[20vw] border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white' id='taskname' required />
-                <select  id='priority' class="w-[80vw] md:w-[20vw] mt-2 border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
+                <input type='text' value='${task.name}' class='outline-none w-[80vw] md:w-[20vw] border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5  border-gray-600 placeholder-gray-400 text-black' id='taskname' style='width: 80%;border-color: rgb(31, 41, 55);background: rgb(55, 65, 81)' required />
+                <select  id='priority' class="w-[80vw] md:w-[20vw] mt-2 border text-sm rounded-sm focus:ring-red-500 focus:border-red-500 block p-2.5 bg-gray-800 border-gray-600 placeholder-gray-400 text-white" style='width: 80%;border-color: rgb(31, 41, 55);background: rgb(55, 65, 81)'>
                   <option value="Low"  ${task.priority === 'Low' && 'selected'}>Low</option>
                   <option value="Medium" ${task.priority === 'Medium' && 'selected'}>Medium</option>
                   <option value="High" ${task.priority === 'High' && 'selected'}>High</option>
@@ -139,7 +139,6 @@ export const todoApp = () => {
           })
     })
   }
-  
 
   const handleMark = (id: number) => {
     Swal.fire({

@@ -34,6 +34,10 @@ td, th {
   }
 }
 
+input {
+  -webkit-appearance: none;
+}
+
 
 ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:hover {
   background: rgb(17,24,39);
