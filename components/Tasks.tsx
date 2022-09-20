@@ -1,28 +1,15 @@
-import {Task} from "../utils/types"
 import TaskContent from "./TaskContent"
-import {useState, useEffect} from 'react'
 import {Pagination} from "../utils/pagination"
 import {AiOutlineRight, AiOutlineLeft} from 'react-icons/ai'
 import {BiFirstPage, BiLastPage} from 'react-icons/bi' 
+import { PaginationApp, todoApp } from "../utils/functions"
 
-type Props = {
-    tasks: Task[],
-    handleDelete(id: number): void
-    handleMark(id: number): void,
-    handleEdit(id: number): void,
-}
 
-const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) => {
-    const [search1, setSearch1] = useState<string>('')
-    const [search2, setSearch2] = useState<string>('')
-    const [page1, setPage1]= useState<number>(1)
-    const [page2, setPage2]= useState<number>(1)
-    const [totalpage1, setTotalPage1] = useState<number>(0)
-    const [totalpage2, setTotalPage2] = useState<number>(0)
-    useEffect(() => {
-        setTotalPage1(Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search1.toLowerCase())).length/10))
-        setTotalPage2(Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10))
-    }, [tasks])
+const TasksContainer = () => {
+    const {tasks} = todoApp()
+    const {search1, setSearch1, search2, setSearch2, page1, setPage1,
+        page2, setPage2, totalpage1, setTotalPage1, totalpage2, setTotalPage2} = PaginationApp()
+
     return (
         <div className='mt-5 flex w-[90%] mx-auto flex-col gap-2 justify-center items-center md:justify-start md:items-start'>
             <div className='ml-auto'>
@@ -44,7 +31,7 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
                 <tbody>
                     {
                         Pagination(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search1.toLowerCase())), page1, 10).map((task) => 
-                            <TaskContent key={task.id} handleMark={handleMark} handleEdit={handleEdit} handleDelete={handleDelete} task={task} />    
+                            <TaskContent key={task.id} task={task} />    
                         )
                     }
                 </tbody>
@@ -94,7 +81,7 @@ const TasksContainer = ({tasks, handleDelete, handleMark, handleEdit}: Props) =>
                 <tbody>
                     {
                         tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).map((task) => 
-                            <TaskContent key={task.id} handleMark={handleMark} handleEdit={handleEdit} handleDelete={handleDelete} task={task} />    
+                            <TaskContent key={task.id} task={task} />    
                         )
                     }
                 </tbody>
