@@ -73,12 +73,24 @@ export function Theme() {
             background: 'rgb(17,24,39)'
         })
     }
+
+    const removeTheme = () => {
+        localStorage.removeItem('theme');
+        document.body.removeAttribute('style')
+        Swal.fire({
+            title: 'Success',
+            text: `Your background color has been cleared!`,
+            icon: 'success',
+            confirmButtonColor: 'rgb(239 68 68)',
+            background: 'rgb(17,24,39)'
+        })
+    }
     useEffect(() => {
         if(localStorage.getItem('theme')) {
             document.body.style.background = localStorage.getItem('theme')!
         }
     }, [])
 
-    return {changeTheme, customTheme, themes}
+    return {changeTheme, customTheme, removeTheme, themes}
 
 }

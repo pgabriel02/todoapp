@@ -16,11 +16,9 @@ const TasksContainer = () => {
         const page2function = Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10)
         if(page1 > page1function && tasks.length > 0) {
             setPage1(page1function)
-        } else if(page2 > page2function) {
+        } else if(page2 > page2function && tasks.length > 0) {
             setPage2(page2function)
         }
-        setTotalPage1(page1function)
-        setTotalPage2(page2function)
         totalpage1 !== page1function && setTotalPage1(page1function)
         totalpage2 !== page2function && setTotalPage2(page2function)
     }, [tasks])

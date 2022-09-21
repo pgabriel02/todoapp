@@ -1,10 +1,11 @@
 import {BsBrush, BsQuestionCircleFill} from 'react-icons/bs'
+import {AiOutlineClear} from 'react-icons/ai'
 import {useState, useEffect} from 'react'
 import { Theme } from '../utils/theme'
 
 const ThemeSwitcher = () => {
     const [toggle, setToggle] = useState<boolean>(false)
-    const {themes, changeTheme, customTheme} = Theme()
+    const {themes, changeTheme, customTheme, removeTheme} = Theme()
     useEffect(() => {
             document.body.addEventListener('click', (e: any) => {
                 console.log((e.target as HTMLButtonElement)?.hasAttribute('data-theme'))
@@ -33,7 +34,8 @@ const ThemeSwitcher = () => {
                             <span key={theme.id} onClick={() => changeTheme(theme.name, theme.rgb)} className='p-[10px] rounded-full cursor-pointer' style={{background: theme.rgb}} title={theme.name} />    
                         )
                     }
-                    <BsQuestionCircleFill onClick={customTheme} className='text-xl text-yellow-200 cursor-pointer' title='Custom hex color' fill='#fff' />
+                    <BsQuestionCircleFill onClick={customTheme} className='text-xl text-yellow-200 cursor-pointer' title='Custom hex color'/>
+                    <AiOutlineClear onClick={removeTheme} className='text-xl rotate-2 text-purple-400 cursor-pointer' title='Clear background' />
                 </div>
             }
         </>
