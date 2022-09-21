@@ -19,6 +19,15 @@ export function Theme() {
         },
         {
             id: 6, name: 'Light blue', rgb: 'rgb(96, 165, 250)'
+        },
+        {
+            id: 7, name: 'Dark purple', rgb: 'rgb(88, 28, 135)'
+        },
+        {
+            id: 8, name: 'Light purple', rgb: 'rgb(192, 132, 252)'
+        },
+        {
+            id: 9, name: 'Black', rgb: 'rgb(0, 0, 0)'
         }
     ];
     

@@ -7,18 +7,14 @@ const ThemeSwitcher = () => {
     const [toggle, setToggle] = useState<boolean>(false)
     const {themes, changeTheme, customTheme, removeTheme} = Theme()
     useEffect(() => {
-            document.body.addEventListener('click', (e: any) => {
-                console.log((e.target as HTMLButtonElement)?.hasAttribute('data-theme'))
-                !(e.target as HTMLButtonElement)?.hasAttribute('data-theme') &&
-                    setToggle(false)
-            })
-        return () => {
-            document.body.removeEventListener('click', (e: any) => {
-                !(e.target as HTMLButtonElement)?.hasAttribute('data-theme') &&
-                    setToggle(false)
-            })
-        }
+        document.body.addEventListener('click', toggleModal)
+        return () => document.body.removeEventListener('click', toggleModal)
     }, [])
+
+    const toggleModal = (e: MouseEvent) => {
+        !(e.target as HTMLButtonElement)?.hasAttribute('data-theme') &&
+            setToggle(false)
+    }
 
     return (
         <>
