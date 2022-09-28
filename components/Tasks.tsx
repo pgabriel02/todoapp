@@ -12,8 +12,10 @@ const TasksContainer = () => {
         page2, setPage2, totalpage1, setTotalPage1, totalpage2, setTotalPage2} = PaginationApp()
 
     useEffect(() => {
-        const page1function = Math.ceil(tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search1.toLowerCase())).length/10)
-        const page2function = Math.ceil(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length/10)
+        const page1Length = tasks?.filter(t => !t.done && t.name.toLowerCase().includes(search1.toLowerCase())).length
+        const page2Length = tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).length
+        const page1function = Math.floor((page1Length < 1 ? page1Length : (page1Length-1))/10)
+        const page2function = Math.floor((page2Length < 1 ? page2Length : (page2Length-1))/10)
         if(page1 > page1function && tasks.length > 0) {
             setPage1(page1function)
         } else if(page2 > page2function && tasks.length > 0) {

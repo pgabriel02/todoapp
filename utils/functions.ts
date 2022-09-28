@@ -189,8 +189,8 @@ export function useTodoApp() {
 export function PaginationApp() {
     const [search1, setSearch1] = useState<string>('')
     const [search2, setSearch2] = useState<string>('')
-    const [page1, setPage1]= useState<number>(1)
-    const [page2, setPage2]= useState<number>(1)
+    const [page1, setPage1]= useState<number>(0)
+    const [page2, setPage2]= useState<number>(0)
     const [totalpage1, setTotalPage1] = useState<number>(0)
     const [totalpage2, setTotalPage2] = useState<number>(0)
 
