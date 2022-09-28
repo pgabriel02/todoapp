@@ -24,6 +24,12 @@ const TasksContainer = () => {
         totalpage1 !== page1function && setTotalPage1(page1function)
         totalpage2 !== page2function && setTotalPage2(page2function)
     }, [tasks])
+
+    useEffect(() => {
+        console.log('page1: ', page1, '/', totalpage1)
+        console.log('page2: ', page2, '/', totalpage2)
+        
+    }, [totalpage1, totalpage2])
     return (
         <>
             <CreateTask name={name} setName={setName} priority={priority} setPriority={setPriority} addTask={addTask} />
@@ -60,7 +66,7 @@ const TasksContainer = () => {
                         </li>
                     }
                     {
-                        page1 > 1 &&
+                        page1 >= 1 &&
                         <li onClick={() => setPage1(old => old - 1)} title='Previous page'>
                             <AiOutlineLeft  className='text-white cursor-pointer text-md'/>
                         </li>
@@ -96,7 +102,7 @@ const TasksContainer = () => {
                     </thead>
                     <tbody>
                         {
-                            tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())).map((task) => 
+                            Pagination(tasks?.filter(t => t.done && t.name.toLowerCase().includes(search2.toLowerCase())), page2, 10).map((task) => 
                                 <TaskContent key={task.id} handleDelete={handleDelete} handleEdit={handleEdit} handleMark={handleMark} task={task} />    
                             )
                         }
@@ -110,7 +116,7 @@ const TasksContainer = () => {
                         </li>
                     }
                     {
-                        page2 > 1 &&
+                        page2 >= 1 &&
                         <li onClick={() => setPage2(old => old - 1)} title='Previous page'>
                             <AiOutlineLeft  className='text-white cursor-pointer text-md'/>
                         </li>
