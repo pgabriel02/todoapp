@@ -48,7 +48,7 @@ export function Theme() {
             if(result.isConfirmed) {
                 //@ts-ignore
                 const color = Swal.getPopup()?.querySelector('#color')?.value
-                if(color[0] !== '#')
+                if(color[0] !== '#' || color.length % 2 !== 0 || color.length > 6)
                     return Swal.fire({
                         title: 'Error!',
                         text: 'Your color is incorect!',
